@@ -1,0 +1,125 @@
+/* General App Styling */
+.App {
+  text-align: center;
+  font-family: "Roboto", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f3f8fe, #e2edf5);
+  color: #333;
+}
+
+/* ===== HEADER (Taskbar) ===== */
+.taskbar {
+  background: #0056b3;
+  color: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.taskbar .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskbar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.report-container {
+  padding: 20px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  width: 220px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  text-align: right;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #0057b7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-button:hover {
+  background-color: #0044a0;
+}
+
+.loading-text {
+  text-align: center;
+  font-weight: bold;
+  color: #0057b7;
+}
+
+.result-table-wrapper {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+/* Highlight first 3 columns */
+.result-table td.special-column {
+  font-weight: bold;
+  background-color: #f0f4ff; /* light blue background */
+}
+
+.result-table th {
+  background-color: #0057b7;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.result-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 15px 0;
+  margin-top: auto;
+  text-align: center;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: lighter;
+}
