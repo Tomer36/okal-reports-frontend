@@ -6,7 +6,7 @@ const Header = () => {
     <div className="taskbar">
       <div className="actions">
         <div className="info">
-          <h1>🧾 דוחות</h1>
+          <h1>🧾 דוח אובלדו לפי מספר לקוח</h1>
         </div>
       </div>
     </div>
