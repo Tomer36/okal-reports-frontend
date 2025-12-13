@@ -1,10 +1,23 @@
 import React, { useState } from "react";
+import ClientInfoPopup from "./ClientInfoPopup";
+import ClientCardPopup from "./ClientCardPopup";
+import ClientPostponedChecksPopup from "./ClientPostponedChecksPopup";
+import ClientDeliveryDocsPopup from "./ClientDeliveryDocsPopup";
 import "../App.css";
 
 function ObligoReport() {
   const [clientNumber, setClientNumber] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const [popupClientNumber, setPopupClientNumber] = useState(null);
+  const [popupCardClientNumber, setPopupCardClientNumber] = useState(null);
+  const [popupChecksClientNumber, setPopupChecksClientNumber] = useState(null);
+  const [popupDeliveryClientNumber, setPopupDeliveryClientNumber] =
+    useState(null);
+
+  // const backendURL = "http://localhost:5000";
+  const backendURL = "http://192.168.2.88:5000";
 
   const handleSearch = async () => {
     if (!clientNumber) return;
@@ -13,16 +26,18 @@ function ObligoReport() {
     setResult(null);
 
     try {
-      const res = await fetch("http://localhost:5000/hashAPI/route-hashAPI", {
+      const res = await fetch(`${backendURL}/hashAPI/route-hashAPI/obligo`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ clientNumber }),
       });
 
+      if (!res.ok) throw new Error("Request failed");
+
       const data = await res.json();
-      setResult(data);
+
+      // Backend returns ARRAY → take first object
+      setResult(Array.isArray(data) ? data[0] : data);
     } catch (err) {
       console.error(err);
       alert("שגיאה בקבלת הנתונים");
@@ -31,11 +46,31 @@ function ObligoReport() {
     }
   };
 
-  // Keys of the special columns
   const specialColumns = ["שם חשבון", "מפתח חשבון", "מספר כרטיס חשבון"];
+
+  const handleCellClick = (key) => {
+    if (!result) return;
+
+    if (key === "מפתח חשבון") {
+      setPopupClientNumber(result["מפתח חשבון"]);
+    }
+
+    if (key === "יתרת חשבון") {
+      setPopupCardClientNumber(result["מפתח חשבון"]);
+    }
+
+    if (key === "שיקים דחויים") {
+      setPopupChecksClientNumber(result["מפתח חשבון"]);
+    }
+
+    if (key === "יתרת תעודות משלוח פתוחות") {
+      setPopupDeliveryClientNumber(result["מפתח חשבון"]);
+    }
+  };
 
   return (
     <div className="report-container">
+      {/* Search */}
       <div className="search-bar">
         <input
           type="text"
@@ -51,6 +86,7 @@ function ObligoReport() {
 
       {loading && <p className="loading-text">טוען נתונים...</p>}
 
+      {/* Main Table */}
       {result && (
         <div className="result-table-wrapper">
           <table className="result-table">
@@ -68,9 +104,15 @@ function ObligoReport() {
                 {Object.entries(result)
                   .reverse()
                   .map(([key, value], index) => {
-                    const isSpecialColumn = specialColumns.includes(key);
+                    const isSpecial = specialColumns.includes(key);
 
-                    const formattedValue = isSpecialColumn
+                    const isClickable =
+                      key === "מפתח חשבון" ||
+                      key === "יתרת חשבון" ||
+                      key === "שיקים דחויים" ||
+                      key === "יתרת תעודות משלוח פתוחות";
+
+                    const formattedValue = isSpecial
                       ? value
                       : typeof value === "number"
                       ? value.toLocaleString(undefined, {
@@ -82,7 +124,10 @@ function ObligoReport() {
                     return (
                       <td
                         key={index}
-                        className={isSpecialColumn ? "special-column" : ""}
+                        className={`${isSpecial ? "special-column" : ""} ${
+                          isClickable ? "clickable-cell" : ""
+                        }`}
+                        onClick={() => isClickable && handleCellClick(key)}
                       >
                         {formattedValue}
                       </td>
@@ -92,6 +137,35 @@ function ObligoReport() {
             </tbody>
           </table>
         </div>
+      )}
+
+      {/* Popups */}
+      {popupClientNumber && (
+        <ClientInfoPopup
+          clientNumber={popupClientNumber}
+          onClose={() => setPopupClientNumber(null)}
+        />
+      )}
+
+      {popupCardClientNumber && (
+        <ClientCardPopup
+          clientNumber={popupCardClientNumber}
+          onClose={() => setPopupCardClientNumber(null)}
+        />
+      )}
+
+      {popupChecksClientNumber && (
+        <ClientPostponedChecksPopup
+          clientNumber={popupChecksClientNumber}
+          onClose={() => setPopupChecksClientNumber(null)}
+        />
+      )}
+
+      {popupDeliveryClientNumber && (
+        <ClientDeliveryDocsPopup
+          clientNumber={popupDeliveryClientNumber}
+          onClose={() => setPopupDeliveryClientNumber(null)}
+        />
       )}
     </div>
   );

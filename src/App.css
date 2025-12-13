@@ -109,6 +109,96 @@
   font-size: 14px;
 }
 
+/* ===== ClientInfoPopup ===== */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.close-button {
+  float: right;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+/* ===== ClientCardPopup Enhancements ===== */
+
+/* Make popup wider for large tables */
+.popup-content {
+  min-width: 90%;
+}
+
+/* Improve table readability inside card popup */
+.popup-content .result-table {
+  font-size: 13px;
+}
+
+/* Sticky table header for long scrolling data */
+.popup-content .result-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #0057b7;
+  color: white;
+  z-index: 2;
+}
+
+/* Zebra rows for better scanning */
+.popup-content .result-table tbody tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+
+/* Highlight balance column */
+.popup-content .result-table td:last-child {
+  font-weight: bold;
+}
+
+/* Numeric alignment */
+.popup-content .result-table td {
+  white-space: nowrap;
+}
+
+/* Date columns slightly muted */
+.popup-content .result-table td[data-date="true"] {
+  color: #555;
+}
+
+/* Hover row */
+.popup-content .result-table tbody tr:hover {
+  background-color: #e8f0ff;
+}
+
+.clickable-cell {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #0057b7;
+  font-weight: 700;
+}
+
+.clickable-cell::after {
+  font-size: 12px;
+}
+
+
+
 /* ===== FOOTER ===== */
 .footer {
   background-color: #333;
@@ -124,3 +214,4 @@
   font-size: 1rem;
   font-weight: lighter;
 }
+
