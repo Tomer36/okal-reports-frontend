@@ -1,12 +1,17 @@
-import React from "react";
 import "../App.css";
 
-const Header = () => {
+const Header = ({ onOpenWhatsapp }) => {
   return (
     <div className="taskbar">
-      <div className="actions">
+      <div className="taskbar-left">
+        <button className="whatsapp-button" onClick={onOpenWhatsapp}>
+         WhatsApp
+        </button>
+      </div>
+
+      <div className="taskbar-right">
         <div className="info">
-          <h1>🧾 דוח אובלדו לפי מספר לקוח</h1>
+          <h1>🧾 דוח אובליגו לפי מספר לקוח</h1>
         </div>
       </div>
     </div>

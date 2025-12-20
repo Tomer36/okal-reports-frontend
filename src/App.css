@@ -1,4 +1,7 @@
-/* General App Styling */
+/* =======================
+   GENERAL APP STYLING
+======================= */
+
 .App {
   text-align: center;
   font-family: "Roboto", Arial, sans-serif;
@@ -9,23 +12,20 @@
   color: #333;
 }
 
-/* ===== HEADER (Taskbar) ===== */
+/* =======================
+   HEADER / TASKBAR
+======================= */
+
 .taskbar {
   background: #0056b3;
   color: white;
   padding: 10px 30px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.taskbar .info {
-  display: flex;
-  flex-direction: column;
 }
 
 .taskbar h1 {
@@ -35,9 +35,54 @@
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.report-container {
-  padding: 20px;
+.taskbar-left {
+  display: flex;
+  align-items: center;
 }
+
+.taskbar .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.whatsapp-button {
+  background: #25d366;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.whatsapp-button:hover {
+  background: #1ebe5d;
+}
+
+/* =======================
+   STATUS COLORS
+======================= */
+
+.status-success {
+  color: green;
+  font-weight: bold;
+}
+
+.status-failed {
+  color: red;
+  font-weight: bold;
+}
+
+.error-cell {
+  max-width: 400px;
+  white-space: pre-wrap;
+  font-size: 12px;
+  color: #555;
+}
+
+/* =======================
+   SEARCH BAR
+======================= */
 
 .search-bar {
   display: flex;
@@ -77,6 +122,14 @@
   color: #0057b7;
 }
 
+/* =======================
+   REPORT / TABLE CONTAINER
+======================= */
+
+.report-container {
+  padding: 20px;
+}
+
 .result-table-wrapper {
   background-color: white;
   border-radius: 12px;
@@ -90,11 +143,6 @@
   border-collapse: collapse;
   text-align: center;
 }
-/* Highlight first 3 columns */
-.result-table td.special-column {
-  font-weight: bold;
-  background-color: #f0f4ff; /* light blue background */
-}
 
 .result-table th {
   background-color: #0057b7;
@@ -107,9 +155,19 @@
   padding: 10px;
   border-bottom: 1px solid #ddd;
   font-size: 14px;
+  white-space: nowrap;
 }
 
-/* ===== ClientInfoPopup ===== */
+/* Highlight first 3 columns */
+.result-table td.special-column {
+  font-weight: bold;
+  background-color: #f0f4ff;
+}
+
+/* =======================
+   POPUP OVERLAY
+======================= */
+
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -127,6 +185,7 @@
   background: white;
   padding: 20px;
   border-radius: 12px;
+  min-width: 90%;
   max-width: 90%;
   max-height: 90%;
   overflow-y: auto;
@@ -140,19 +199,43 @@
   font-size: 20px;
   cursor: pointer;
 }
-/* ===== ClientCardPopup Enhancements ===== */
 
-/* Make popup wider for large tables */
-.popup-content {
-  min-width: 90%;
+/* =======================
+   POPUP HEADER
+======================= */
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
 }
 
-/* Improve table readability inside card popup */
+.refresh-button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.refresh-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =======================
+   POPUP TABLE ENHANCEMENTS
+======================= */
+
 .popup-content .result-table {
   font-size: 13px;
 }
 
-/* Sticky table header for long scrolling data */
+/* Sticky table header */
 .popup-content .result-table thead th {
   position: sticky;
   top: 0;
@@ -161,30 +244,29 @@
   z-index: 2;
 }
 
-/* Zebra rows for better scanning */
+/* Zebra rows */
 .popup-content .result-table tbody tr:nth-child(even) {
   background-color: #f7f9fc;
-}
-
-/* Highlight balance column */
-.popup-content .result-table td:last-child {
-  font-weight: bold;
-}
-
-/* Numeric alignment */
-.popup-content .result-table td {
-  white-space: nowrap;
-}
-
-/* Date columns slightly muted */
-.popup-content .result-table td[data-date="true"] {
-  color: #555;
 }
 
 /* Hover row */
 .popup-content .result-table tbody tr:hover {
   background-color: #e8f0ff;
 }
+
+/* Highlight last column */
+.popup-content .result-table td:last-child {
+  font-weight: bold;
+}
+
+/* Date column muted */
+.popup-content .result-table td[data-date="true"] {
+  color: #555;
+}
+
+/* =======================
+   CLICKABLE CELLS
+======================= */
 
 .clickable-cell {
   cursor: pointer;
@@ -197,9 +279,10 @@
   font-size: 12px;
 }
 
+/* =======================
+   FOOTER
+======================= */
 
-
-/* ===== FOOTER ===== */
 .footer {
   background-color: #333;
   color: white;
@@ -214,4 +297,3 @@
   font-size: 1rem;
   font-weight: lighter;
 }
-

@@ -16,8 +16,8 @@ function ObligoReport() {
   const [popupDeliveryClientNumber, setPopupDeliveryClientNumber] =
     useState(null);
 
-  // const backendURL = "http://localhost:5000";
-  const backendURL = "http://192.168.2.88:5000";
+  const backendURL = "http://localhost:5000";
+  // const backendURL = "http://192.168.2.88:5000";
 
   const handleSearch = async () => {
     if (!clientNumber) return;
