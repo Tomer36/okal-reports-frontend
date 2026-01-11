@@ -1,11 +1,17 @@
 import "../App.css";
+import whatsappIcon from "../assets/whatsapp-svg.svg";
 
 const Header = ({ onOpenWhatsapp }) => {
   return (
     <div className="taskbar">
       <div className="taskbar-left">
         <button className="whatsapp-button" onClick={onOpenWhatsapp}>
-         WhatsApp
+          <img
+            src={whatsappIcon}
+            alt="WhatsApp"
+            className="whatsapp-icon"
+          />
+          WhatsApp
         </button>
       </div>
 

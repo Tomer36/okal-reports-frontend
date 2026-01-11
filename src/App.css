@@ -53,10 +53,18 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .whatsapp-button:hover {
   background: #1ebe5d;
+}
+
+.whatsapp-icon {
+  width: 18px;
+  height: 18px;
 }
 
 /* =======================
@@ -209,12 +217,14 @@
   align-items: center;
   justify-content: space-around;
   flex-direction: row-reverse;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
+  background-color: #0057b7;
+  color: white;
 }
 
 .refresh-button {
-  background: #1976d2;
-  color: white;
+  background: white;
+  color: #0057b7;
   border: none;
   padding: 6px 12px;
   border-radius: 4px;
@@ -277,6 +287,52 @@
 
 .clickable-cell::after {
   font-size: 12px;
+}
+
+/* =======================
+   WHATSAPP POPUP SEARCH + PAGINATION
+======================= */
+
+.whatsapp-search {
+  margin-bottom: 10px;
+}
+
+.pagination-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin: 10px 0 15px;
+}
+
+.pagination-info {
+  font-weight: bold;
+  color: #0057b7;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.pagination-button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: white;
+  font-size: 14px;
+}
+
+.pagination-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.clear-button {
+  background: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
 }
 
 /* =======================
