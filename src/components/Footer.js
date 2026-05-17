@@ -4,7 +4,7 @@ import "../App.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© 2025 דוחות. כל הזכויות שמורות.</p>
+      <p>© 2026 Okal WhatsApp · כל הזכויות שמורות</p>
     </footer>
   );
 };

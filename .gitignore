@@ -43,3 +43,5 @@ __pycache__/
 # Avoid package-lock.json if using yarn
 # (Uncomment below if not applicable)
 # package-lock.json
+
+.claude/
